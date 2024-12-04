@@ -10,6 +10,7 @@ const AllUsers = () => {
     const { data, isLoading } = useQuery({
         queryKey: ['users', {page}],
         queryFn:()=> fetchUsers(page),
+        staleTime: 5000 * 60,
     })
 
     return (
