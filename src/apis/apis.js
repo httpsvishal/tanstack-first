@@ -1,5 +1,5 @@
-export const fetchUsers = async (page=1) => {
-    const response = await fetch(`http://localhost:3000/users?_page=${page}&_per_page=2`);
+export const fetchUsers = async (page = 1, limit = 8) => {
+    const response = await fetch(`http://localhost:3000/users?_page=${page}&_per_page=${limit}`);
     const data = await response.json();
     return data;
 }

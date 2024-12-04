@@ -7,9 +7,9 @@ const AllUsers = () => {
 
     const [page, setPage] = useState(1);
 
-    const { data: usersData,isLoading } = useQuery({
-        queryKey: ["Users"],
-        queryFn: fetchUsers(),
+    const { data, isLoading } = useQuery({
+        queryKey: ['users', {page}],
+        queryFn:()=> fetchUsers(page),
     })
 
     return (
@@ -31,7 +31,7 @@ const AllUsers = () => {
                     <h1>Loading....</h1>
                 }
 
-                {usersData?.data?.data.map((user) => (
+                {data && data.data.map((user) => (
                     <UserCard key={user.id} data={user} />
                 ))}
             </div>
